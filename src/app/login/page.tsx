@@ -22,7 +22,7 @@ export default function LoginPage() {
         <Auth
           supabaseClient={supabase}
           appearance={{ theme: ThemeSupa }}
-          providers={['github', 'google']} // you can add/remove providers
+          providers={['github', 'google']}
           theme="light"
         />
       </div>

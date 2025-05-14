@@ -1,4 +1,3 @@
-// src/server/api/trpc/routers/_app.ts
 import { router } from '../trpc'
 import { taskRouter } from './task'
 import { userRouter } from './user'

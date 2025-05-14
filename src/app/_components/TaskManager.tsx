@@ -35,13 +35,9 @@ export default function TaskManager({
     setIsTaskModalOpen(true);
   };
 
-  // const handleDeleteTask = (id: string) => {
-  //   setTasks(tasks.filter((task) => task.id !== id));
-  // };
-
 const createTask = api.task.create.useMutation({
   onSuccess: (newTask) => {
-    console.log('New task created:', newTask);  // Debugging line
+    console.log('New task created:', newTask);
     setTasks([...tasks, newTask]);
   },
 });
@@ -60,7 +56,6 @@ const createTask = api.task.create.useMutation({
 
   const handleSaveTask = (task: Task) => {
     if (task.id) {
-      // Update existing task
       updateTask.mutate({
         id: task.id,
         data: {
@@ -74,7 +69,6 @@ const createTask = api.task.create.useMutation({
         },
       });
     } else {
-      // Create new task
       createTask.mutate({
         title: task.title,
         description: task.description,

@@ -1,4 +1,3 @@
-// src/server/api/trpc/trpc.ts
 import { initTRPC, TRPCError } from '@trpc/server';
 import superjson from 'superjson';
 import type { Context } from './context';
@@ -12,16 +11,16 @@ const t = initTRPC.context<Context>().create({
   },
 });
 
-// export const createTRPCContext = async (opts: { headers: Headers }) => {
-//   const supabase = createServerComponentClient({ cookies: () => cookies() });
-//   const { data: { session } } = await supabase.auth.getSession();
+export const createTRPCContext = async (opts: { headers: Headers }) => {
+  const supabase = createServerComponentClient({ cookies: () => cookies() });
+  const { data: { session } } = await supabase.auth.getSession();
 
-//   return {
-//     session,
-//     supabase,
-//     headers: opts.headers,
-//   };
-// };
+  return {
+    session,
+    supabase,
+    headers: opts.headers,
+  };
+};
 
 export const {
   router,

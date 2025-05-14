@@ -30,12 +30,11 @@ export enum Priority {
     createdAt: Date
   }
   
-// src/types.ts
 export interface Task {
   id: string
   title: string
   description: string
-  assignee: User // This must always be defined
+  assignee: User
   deadline: string
   priority: Priority
   status: Status
@@ -43,12 +42,11 @@ export interface Task {
   createdAt: Date
 }
 
-// If you need to make some fields optional in your form:
 export interface TaskFormValues {
   id?: string
   title: string
   description?: string
-  assigneeId: string // Just store the ID in the form
+  assigneeId: string 
   deadline?: string
   priority: Priority
   status: Status

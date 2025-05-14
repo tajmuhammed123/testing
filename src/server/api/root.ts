@@ -12,7 +12,6 @@ export const appRouter = createTRPCRouter({
 
 export type AppRouter = typeof appRouter;
 
-// Create caller function directly from the router
 export function createCaller() {
   return {
     task: taskRouter.createCaller,

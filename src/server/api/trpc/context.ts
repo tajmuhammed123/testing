@@ -4,13 +4,12 @@ import type { FetchCreateContextFnOptions } from "@trpc/server/adapters/fetch";
 import type { Database } from "~/app/types/database";
 
 export const createContext = async (opts: FetchCreateContextFnOptions) => {
-  // Create the Supabase client using the async cookies() function correctly
+
   const cookieStore = await cookies();
   const supabase = createServerComponentClient<Database>({
-    cookies: async () => await cookies(),
+    cookies: async () => cookieStore,
   });
 
-  // Get session and user data
   const {
     data: { session },
   } = await supabase.auth.getSession();

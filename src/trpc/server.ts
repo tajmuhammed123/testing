@@ -9,19 +9,17 @@ import { createServerActionClient, createServerComponentClient } from "@supabase
 import type { Database } from "~/app/types/database";
 
 const createContext = cache(async () => {
-  // Get the cookies store
+
   const cookieStore = cookies();
 
   const supabase = createServerActionClient<Database>({
     cookies: () => cookieStore,
   });
 
-  // Use getUser() as the primary authentication method as per warning
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
-  // We can still get the session if needed for other functionality
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -30,11 +28,9 @@ const createContext = cache(async () => {
     throw new Error("No authenticated user found");
   }
 
-  // Await the nextHeaders() call to get the ReadonlyHeaders object
   const headersList = await nextHeaders();
   const headers = new Headers();
 
-  // Copy all headers from the ReadonlyHeaders object to a standard Headers object
   headersList.forEach((value, key) => {
     headers.append(key, value);
   });

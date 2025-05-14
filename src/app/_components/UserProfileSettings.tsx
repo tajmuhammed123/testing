@@ -1,11 +1,9 @@
-// components/UserProfileSettings.tsx
 import Image from "next/image";
 import { useState } from "react";
 
 const UserProfileSettings = () => {
   const [activeTab, setActiveTab] = useState<"profile" | "project">("profile");
 
-  // Dummy user data
   const [userData, setUserData] = useState({
     name: "Alex Johnson",
     email: "alex.johnson@example.com",
@@ -14,7 +12,6 @@ const UserProfileSettings = () => {
     position: "Senior Developer",
   });
 
-  // Dummy project data
   const [projectData, setProjectData] = useState({
     title: "Task Management App",
     description: "A modern task management application for teams",
@@ -79,7 +76,6 @@ const UserProfileSettings = () => {
 
   const handleAddMember = () => {
     if (newMemberEmail.trim()) {
-      // In a real app, you would send an invitation
       alert(`Invitation sent to ${newMemberEmail}`);
       setNewMemberEmail("");
     }
